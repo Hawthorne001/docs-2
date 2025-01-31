@@ -17,18 +17,18 @@ We need a Dockerfile similar to the following:
 
 ```Dockerfile
 # Define the base image
-FROM ubuntu:jammy
+FROM ubuntu:noble
 
 # Install packages that we want to make available at run time
 RUN apt-get update && \
   apt-get install -y xz-utils ca-certificates && \
-  rm -rf /var/lib/apt/lists/* \
+  rm -rf /var/lib/apt/lists/*
 
 # Create user and group
 ARG cnb_uid=1000
 ARG cnb_gid=1000
 RUN groupadd cnb --gid ${cnb_gid} && \
-  useradd --uid ${cnb_uid} --gid ${cnb_gid} -m -s /bin/bash cnb \
+  useradd --uid ${cnb_uid} --gid ${cnb_gid} -m -s /bin/bash cnb
 
 # Set user and group
 USER ${cnb_uid}:${cnb_gid}
@@ -40,7 +40,7 @@ LABEL io.buildpacks.base.distro.version="your distro version"
 
 ### Define the base image
 
-We start with `ubuntu:jammy` as our base image.
+We start with `ubuntu:noble` as our base image.
 You can use any operating system, operating system distribution, and operating system distribution version of your choosing,
 as long as your application will run there.
 
@@ -62,5 +62,5 @@ To determine which values to provide, see [targets](/docs/for-buildpack-authors/
 ## Build the run base image
 
 ```bash
-docker build . -t cnbs/sample-base-run:jammy
+docker build . -t cnbs/sample-base-run:noble
 ```

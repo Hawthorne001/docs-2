@@ -25,7 +25,7 @@ pack buildpack new examples/node-js \
     --api 0.10 \
     --path node-js-buildpack \
     --version 0.0.1 \
-    --stacks io.buildpacks.samples.stacks.jammy
+    --targets "linux/amd64"
 ```
 <!--+- "{{execute}}"+-->
 This command will create `node-js-buildpack` directory which contains `buildpack.toml`, `bin/build`,  `bin/detect` files.
@@ -34,7 +34,6 @@ This command will create `node-js-buildpack` directory which contains `buildpack
 - `-a, --api` Buildpack API compatibility of the generated buildpack
 - `-h, --help` Help for 'new'
 - `--path` the location on the filesystem to generate the artifacts
-- `--stacks` Stacks (deprecated) the buildpack will work with
 - `-V, --version` the version of the buildpack in buildpack.toml
 
 
@@ -46,6 +45,11 @@ You will have `node-js-buildpack/buildpack.toml`<!--+"{{open}}"+--> in your buil
 ```toml
 # Buildpack API version
 api = "0.10"
+# Enable to allow the buildpack to build on a Windows target
+WithWindowsBuild = false
+# Enable to force the buildpack to build only on supported Linux targets
+# "false" by default, which allows the buildpack to build on *all* Linux targets
+WithLinuxBuild = false
 
 # Buildpack ID and metadata
 [buildpack]
@@ -54,17 +58,13 @@ api = "0.10"
 
 # Targets the buildpack will work with
 [[targets]]
-os = "linux"
-
-# Stacks (deprecated) the buildpack will work with
-[[stacks]]
-  id = "io.buildpacks.samples.stacks.jammy"
-
+  os = "linux"
+  arch = "amd64"
 ```
 
 The buildpack ID is the way you will reference the buildpack when you create buildpack groups, builders, etc.
 [Targets](/docs/for-buildpack-authors/concepts/targets/) identifies the kind of build and run base images the buildpack will work with.
-The stack ID (deprecated) uniquely identifies a build and run image configuration the buildpack will work with. This example can be run on Ubuntu Jammy.
+The stack ID (deprecated) uniquely identifies a build and run image configuration the buildpack will work with. This example can be run on Ubuntu Noble.
 
 ### `detect` and `build`
 
@@ -102,7 +102,7 @@ Set your default [builder][builder] by running the following:
 
 <!-- test:exec -->
 ```bash
-pack config default-builder cnbs/sample-builder:jammy
+pack config default-builder cnbs/sample-builder:noble
 ```
 <!--+- "{{execute}}"+-->
 
@@ -110,7 +110,7 @@ Tell pack to trust our default builder:
 
 <!-- test:exec -->
 ```bash
-pack config trusted-builders add cnbs/sample-builder:jammy
+pack config trusted-builders add cnbs/sample-builder:noble
 ```
 <!--+- "{{execute}}"+-->
 
@@ -130,9 +130,9 @@ After running the command, you should see that it failed to detect, as the `dete
 ```
 ===> DETECTING
 ...
-err:  examples/node-js@0.0.1 (1)
-ERROR: No buildpack groups passed detection.
-ERROR: failed to detect: buildpack(s) failed with err
+[detector] err:  examples/node-js@0.0.1 (1)
+[detector] ERROR: No buildpack groups passed detection.
+[detector] ERROR: failed to detect: buildpack(s) failed with err
 ERROR: failed to build: executing lifecycle: failed with status code: 21
 ```
 

@@ -43,13 +43,13 @@
 <meta property="twitter:creator" content="@buildpacks_io">
 
   <script
-    src="https://cdn.jsdelivr.net/combine/npm/axios@0.21.0,npm/jquery@3.5.1,npm/bootstrap@4.5.3,npm/fullcalendar@5.4.0,npm/jquery-replacetext@1.1.0/replacetext.min.js"></script>
+    src="https://cdn.jsdelivr.net/combine/npm/axios@1.7.9,npm/jquery@3.7.1,npm/bootstrap@5.3.3,npm/fullcalendar@5.4.0,npm/jquery-replacetext@1.1.0/replacetext.min.js"></script>
 
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css"
     crossorigin="anonymous">
   <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css,npm/fullcalendar@5.4.0/main.min.css"
+    href="https://cdn.jsdelivr.net/combine/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css,npm/fullcalendar@5.4.0/main.min.css"
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Source+Sans+Pro:400,400i,600" rel="stylesheet">
   
@@ -115,33 +115,39 @@
       <ul class="navbar-nav">
         
         
+          
+          <li class="nav-item ms-lg-4 text-center text-lg-left ">
+            <a class="nav-link py-2 py-lg-0 px-1"  
+              href="/features">
+              Features
+            </a>
+          </li>
         
-        <li class="nav-item mr-lg-4 text-center text-lg-left ">
-          <a class="nav-link py-2 py-lg-0 px-1"  href="/features">
-            Features
-          </a>
-        </li>
+          
+          <li class="nav-item ms-lg-4 text-center text-lg-left ">
+            <a class="nav-link py-2 py-lg-0 px-1"  
+              href="/community">
+              Community
+            </a>
+          </li>
         
+          
+          <li class="nav-item ms-lg-4 text-center text-lg-left ">
+            <a class="nav-link py-2 py-lg-0 px-1" target='_blank' 
+              href="https://medium.com/buildpacks">
+              Blog
+            </a>
+          </li>
         
-        <li class="nav-item mr-lg-4 text-center text-lg-left ">
-          <a class="nav-link py-2 py-lg-0 px-1"  href="/community">
-            Community
-          </a>
-        </li>
+          
+          <li class="nav-item ms-lg-4 text-center text-lg-left ">
+            <a class="nav-link py-2 py-lg-0 px-1" target='_blank' 
+              href="https://registry.buildpacks.io/">
+              Registry
+            </a>
+          </li>
         
-        
-        <li class="nav-item mr-lg-4 text-center text-lg-left ">
-          <a class="nav-link py-2 py-lg-0 px-1" target='_blank'  href="https://medium.com/buildpacks">
-            Blog
-          </a>
-        </li>
-        
-        
-        <li class="nav-item mr-lg-4 text-center text-lg-left ">
-          <a class="nav-link py-2 py-lg-0 px-1" target='_blank'  href="https://registry.buildpacks.io/">
-            Registry
-          </a>
-        </li>
+    
         
         <li class="nav-item text-center d-lg-none">
           <a class="nav-link py-2 px-1" href="/docs">Docs</a>
@@ -151,9 +157,11 @@
         </li>
       </ul>
 
-      <a class="button-light mr-3 d-none d-lg-block" href="/docs"><i class="far fa-file-alt mr-2"></i>Docs</a>
-      <a class="github-button icon-button bg-blue button d-none d-lg-flex" href="https://github.com/buildpacks">GitHub</a>
-    </div>
+      <a class="button-light ms-3 d-none d-lg-block" href="/docs">
+        <i class="far fa-file-alt me-2"></i>Docs
+      </a>
+       <a class="github-button ms-3  icon-button bg-blue button d-none d-lg-flex" href="https://github.com/buildpacks">GitHub</a>
+    </div>    
   </nav>
 </header>
 
@@ -222,6 +230,9 @@
 </li>
 <li data-nav-id="/docs/for-app-developers/concepts/reproducibility/" class="dd-item depth-2 collapse">
   <a href="/docs/for-app-developers/concepts/reproducibility/">What is build reproducibility?</a>
+</li>
+<li data-nav-id="/docs/for-app-developers/concepts/experimental-features/" class="dd-item depth-2 collapse">
+  <a href="/docs/for-app-developers/concepts/experimental-features/">What are experimental features?</a>
 </li>
   </ul>
 </li>
@@ -349,6 +360,9 @@
   <a href="/docs/for-platform-operators/concepts/lifecycle/extend/">Extend</a>
 </li>
   </ul>
+</li>
+<li data-nav-id="/docs/for-platform-operators/concepts/base-images/" class="dd-item depth-2 collapse">
+  <a href="/docs/for-platform-operators/concepts/base-images/">Base image types</a>
 </li>
 <li data-nav-id="/docs/for-platform-operators/concepts/composite-buildpack/" class="dd-item depth-2 collapse">
   <a href="/docs/for-platform-operators/concepts/composite-buildpack/">What is a composite buildpack?</a>
@@ -598,6 +612,9 @@
 </li>
 <li data-nav-id="/docs/for-platform-operators/how-to/build-inputs/declare-source-metadata/" class="dd-item depth-3 collapse">
   <a href="/docs/for-platform-operators/how-to/build-inputs/declare-source-metadata/">Declare source metadata</a>
+</li>
+<li data-nav-id="/docs/for-platform-operators/how-to/build-inputs/build-env/" class="dd-item depth-3 collapse">
+  <a href="/docs/for-platform-operators/how-to/build-inputs/build-env/">Specify the build time environment variables</a>
 </li>
 <li data-nav-id="/docs/for-platform-operators/how-to/build-inputs/stack/" class="dd-item depth-3 collapse">
   <a href="/docs/for-platform-operators/how-to/build-inputs/stack/">Create a stack (deprecated)</a>
@@ -908,10 +925,11 @@
 <li>Whether the run-image can be rebased with a new version through the <code>Rebasable</code> label or not</li>
 <li>And more&hellip;!</li>
 </ul>
+<p><code>pack</code> offers a command to help you inspect the application image and view some of its contents as shown below:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pack inspect-image test-node-js-app
 </span></span></code></pre></div><p>You should see the following:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Run Images:
-</span></span><span class="line"><span class="cl">  cnbs/sample-base-run:jammy
+</span></span><span class="line"><span class="cl">  cnbs/sample-base-run:noble
 </span></span><span class="line"><span class="cl">...
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">Buildpacks:
@@ -922,6 +940,14 @@
 </span></span><span class="line"><span class="cl">  TYPE                 SHELL        COMMAND                           ARGS        WORK DIR
 </span></span><span class="line"><span class="cl">  web (default)        bash         node-js app.js                                   /workspace
 </span></span></code></pre></div><p>Apart from the above standard metadata, buildpacks can also populate information about the dependencies they have provided in form of a <code>Software Bill-of-Materials</code> or <a href="/docs/for-app-developers/how-to/build-outputs/download-sbom">SBOM</a>.</p>
+<p>Buildpacks-built images are constructed in a way that’s easy to understand, with each of the layers being meaningful and independent of all other layers. You can get more details about each layer and how it was created to better understand how the <a href="https://buildpacks.io/docs/for-app-developers/concepts/build/">build</a> actually worked.</p>
+<p>There are a number of available tools that can help you achieve this and understand what is contained in your <code>OCI</code> image; a popular one is <a href="https://github.com/wagoodman/dive">dive</a>.</p>
+<p><code>Dive</code> can help you inspect <code>OCI</code> images and view their layers and each layer&rsquo;s details. If you were to build an <code>OCI</code> image following the <a href="https://buildpacks.io/docs/for-app-developers/how-to/build-outputs/specify-launch-process/#build-a-multi-process-app">multi process app</a> example and run <code>dive</code> on the generated image, you&rsquo;ll be presented with some detailed information about all of the image layers and the contents of each layer.</p>
+<p>You can use <code>dive</code> as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dive multi-process-app
+</span></span></code></pre></div><p>The output should look similar to the following:</p>
+<p>PLACEHOLDER</p>
+<p>As seen in the output above, you&rsquo;re presented with <code>Layers</code>, <code>Layer Details</code>, <code>Image Details</code>, and <code>Current Layer Contents</code>. To view the contents or explore the file tree of any layer, you need to select the layer on the left using the arrow keys.</p>
 
         
 

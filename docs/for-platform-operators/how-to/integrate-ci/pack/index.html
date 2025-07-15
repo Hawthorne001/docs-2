@@ -43,13 +43,13 @@
 <meta property="twitter:creator" content="@buildpacks_io">
 
   <script
-    src="https://cdn.jsdelivr.net/combine/npm/axios@0.21.0,npm/jquery@3.5.1,npm/bootstrap@4.5.3,npm/fullcalendar@5.4.0,npm/jquery-replacetext@1.1.0/replacetext.min.js"></script>
+    src="https://cdn.jsdelivr.net/combine/npm/axios@1.7.9,npm/jquery@3.7.1,npm/bootstrap@5.3.3,npm/fullcalendar@5.4.0,npm/jquery-replacetext@1.1.0/replacetext.min.js"></script>
 
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css"
     crossorigin="anonymous">
   <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css,npm/fullcalendar@5.4.0/main.min.css"
+    href="https://cdn.jsdelivr.net/combine/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css,npm/fullcalendar@5.4.0/main.min.css"
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Source+Sans+Pro:400,400i,600" rel="stylesheet">
   
@@ -115,33 +115,39 @@
       <ul class="navbar-nav">
         
         
+          
+          <li class="nav-item ms-lg-4 text-center text-lg-left ">
+            <a class="nav-link py-2 py-lg-0 px-1"  
+              href="/features">
+              Features
+            </a>
+          </li>
         
-        <li class="nav-item mr-lg-4 text-center text-lg-left ">
-          <a class="nav-link py-2 py-lg-0 px-1"  href="/features">
-            Features
-          </a>
-        </li>
+          
+          <li class="nav-item ms-lg-4 text-center text-lg-left ">
+            <a class="nav-link py-2 py-lg-0 px-1"  
+              href="/community">
+              Community
+            </a>
+          </li>
         
+          
+          <li class="nav-item ms-lg-4 text-center text-lg-left ">
+            <a class="nav-link py-2 py-lg-0 px-1" target='_blank' 
+              href="https://medium.com/buildpacks">
+              Blog
+            </a>
+          </li>
         
-        <li class="nav-item mr-lg-4 text-center text-lg-left ">
-          <a class="nav-link py-2 py-lg-0 px-1"  href="/community">
-            Community
-          </a>
-        </li>
+          
+          <li class="nav-item ms-lg-4 text-center text-lg-left ">
+            <a class="nav-link py-2 py-lg-0 px-1" target='_blank' 
+              href="https://registry.buildpacks.io/">
+              Registry
+            </a>
+          </li>
         
-        
-        <li class="nav-item mr-lg-4 text-center text-lg-left ">
-          <a class="nav-link py-2 py-lg-0 px-1" target='_blank'  href="https://medium.com/buildpacks">
-            Blog
-          </a>
-        </li>
-        
-        
-        <li class="nav-item mr-lg-4 text-center text-lg-left ">
-          <a class="nav-link py-2 py-lg-0 px-1" target='_blank'  href="https://registry.buildpacks.io/">
-            Registry
-          </a>
-        </li>
+    
         
         <li class="nav-item text-center d-lg-none">
           <a class="nav-link py-2 px-1" href="/docs">Docs</a>
@@ -151,9 +157,11 @@
         </li>
       </ul>
 
-      <a class="button-light mr-3 d-none d-lg-block" href="/docs"><i class="far fa-file-alt mr-2"></i>Docs</a>
-      <a class="github-button icon-button bg-blue button d-none d-lg-flex" href="https://github.com/buildpacks">GitHub</a>
-    </div>
+      <a class="button-light ms-3 d-none d-lg-block" href="/docs">
+        <i class="far fa-file-alt me-2"></i>Docs
+      </a>
+       <a class="github-button ms-3  icon-button bg-blue button d-none d-lg-flex" href="https://github.com/buildpacks">GitHub</a>
+    </div>    
   </nav>
 </header>
 
@@ -222,6 +230,9 @@
 </li>
 <li data-nav-id="/docs/for-app-developers/concepts/reproducibility/" class="dd-item depth-2 collapse">
   <a href="/docs/for-app-developers/concepts/reproducibility/">What is build reproducibility?</a>
+</li>
+<li data-nav-id="/docs/for-app-developers/concepts/experimental-features/" class="dd-item depth-2 collapse">
+  <a href="/docs/for-app-developers/concepts/experimental-features/">What are experimental features?</a>
 </li>
   </ul>
 </li>
@@ -349,6 +360,9 @@
   <a href="/docs/for-platform-operators/concepts/lifecycle/extend/">Extend</a>
 </li>
   </ul>
+</li>
+<li data-nav-id="/docs/for-platform-operators/concepts/base-images/" class="dd-item depth-2 collapse">
+  <a href="/docs/for-platform-operators/concepts/base-images/">Base image types</a>
 </li>
 <li data-nav-id="/docs/for-platform-operators/concepts/composite-buildpack/" class="dd-item depth-2 collapse">
   <a href="/docs/for-platform-operators/concepts/composite-buildpack/">What is a composite buildpack?</a>
@@ -598,6 +612,9 @@
 </li>
 <li data-nav-id="/docs/for-platform-operators/how-to/build-inputs/declare-source-metadata/" class="dd-item depth-3 collapse">
   <a href="/docs/for-platform-operators/how-to/build-inputs/declare-source-metadata/">Declare source metadata</a>
+</li>
+<li data-nav-id="/docs/for-platform-operators/how-to/build-inputs/build-env/" class="dd-item depth-3 collapse">
+  <a href="/docs/for-platform-operators/how-to/build-inputs/build-env/">Specify the build time environment variables</a>
 </li>
 <li data-nav-id="/docs/for-platform-operators/how-to/build-inputs/stack/" class="dd-item depth-3 collapse">
   <a href="/docs/for-platform-operators/how-to/build-inputs/stack/">Create a stack (deprecated)</a>
@@ -910,7 +927,7 @@
 <hr>
 <h2 id="pack-cli"><code>pack</code> CLI</h2>
 <h3 id="install">Install</h3>
-<p>You can install the most recent version of the <code>pack</code> CLI (version <strong>0.34.2</strong>) on the following operating systems:</p>
+<p>You can install the most recent version of the <code>pack</code> CLI (version <strong>0.38.2</strong>) on the following operating systems:</p>
 
 
 
@@ -972,11 +989,9 @@
               
               
               <div class="tab-pane px-3 fade " id="linux-arch-linux">
-                <p>On Arch Linux, there are two packages available:</p>
-<ul>
-<li><a href="https://aur.archlinux.org/packages/pack-cli/">pack-cli</a></li>
-<li><a href="https://aur.archlinux.org/packages/pack-cli-bin/">pack-cli-bin</a></li>
-</ul>
+                <p><code>pack</code> can be installed using the <a href="https://archlinux.org/packages/extra/x86_64/pack-cli">official repo</a> by running the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pacman -S pack-cli
+</span></span></code></pre></div>
               </div>
             
               
@@ -992,7 +1007,7 @@
 </li>
 <li>Use a version tag to pin a specific release:
 <ul>
-<li><code>buildpacksio/pack:0.34.2</code></li>
+<li><code>buildpacksio/pack:0.38.2</code></li>
 <li><a href="https://hub.docker.com/r/buildpacksio/pack/tags">other versions</a></li>
 </ul>
 </li>
@@ -1031,7 +1046,7 @@
               
               <div class="tab-pane px-3 fade " id="linux-script-install">
                 <p>The following command will download the latest version of <code>pack</code> from <a href="https://github.com/buildpacks/pack/releases">GitHub</a> and install it in <code>/usr/local/bin/</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.34.2/pack-v0.34.2-linux.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.38.2/pack-v0.38.2-linux.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
 </span></span></code></pre></div>
               </div>
             
@@ -1092,7 +1107,7 @@
 </li>
 <li>Use a version tag to pin a specific release:
 <ul>
-<li><code>buildpacksio/pack:0.34.2</code></li>
+<li><code>buildpacksio/pack:0.38.2</code></li>
 <li><a href="https://hub.docker.com/r/buildpacksio/pack/tags">other versions</a></li>
 </ul>
 </li>
@@ -1122,9 +1137,9 @@
               <div class="tab-pane px-3 fade " id="macos-script-install">
                 <p>The following command will download the latest version of <code>pack</code> from <a href="https://github.com/buildpacks/pack/releases">GitHub</a> and install it in <code>/usr/local/bin/</code>.</p>
 <p>Intel:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.34.2/pack-v0.34.2-macos.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.38.2/pack-v0.38.2-macos.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
 </span></span></code></pre></div><p>Apple Silicon:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.34.2/pack-v0.34.2-macos-arm64.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.38.2/pack-v0.38.2-macos-arm64.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
 </span></span></code></pre></div>
               </div>
             
@@ -1176,7 +1191,7 @@
               
               <div class="tab-pane px-3 fade active in show" id="windows-chocolatey">
                 <p>To install <code>pack</code> on Windows, we recommend using <a href="https://chocolatey.org/">Chocolatey</a>:</p>
-<pre tabindex="0"><code>choco install pack --version=0.34.2
+<pre tabindex="0"><code>choco install pack --version=0.38.2
 </code></pre>
               </div>
             
@@ -1193,7 +1208,7 @@
 </li>
 <li>Use a version tag to pin a specific release:
 <ul>
-<li><code>buildpacksio/pack:0.34.2</code></li>
+<li><code>buildpacksio/pack:0.38.2</code></li>
 <li><a href="https://hub.docker.com/r/buildpacksio/pack/tags">other versions</a></li>
 </ul>
 </li>

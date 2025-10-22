@@ -925,7 +925,8 @@ The Buildpack API version the buildpack adheres to. Used to ensure <a href="/doc
 the <a href="/docs/for-buildpack-authors/concepts/lifecycle-phases">lifecycle</a>.</p>
 <blockquote>
 <p>Not to be confused with Cloud Foundry or Heroku buildpack versions.
-This version pertains to the interface between the <a href="/docs/for-buildpack-authors/concepts/buildpack">buildpack</a> and the <a href="/docs/for-buildpack-authors/concepts/lifecycle-phases">lifecycle</a> of Cloud Native Buildpacks.</p></blockquote>
+This version pertains to the interface between the <a href="/docs/for-buildpack-authors/concepts/buildpack">buildpack</a> and the <a href="/docs/for-buildpack-authors/concepts/lifecycle-phases">lifecycle</a> of Cloud Native Buildpacks.</p>
+</blockquote>
 </li>
 <li>
 <p><strong><code>buildpack</code></strong> <em>(required)</em><br>
@@ -945,7 +946,10 @@ Human readable name.</p>
 </li>
 <li>
 <p><strong><code>clear-env</code></strong> <em>(boolean, optional, default: <code>false</code>)</em><br>
-Clears user-defined environment variables when <code>true</code> on executions of <code>bin/detect</code> and <code>bin/build</code>.</p>
+When <code>true</code>, prevents the lifecycle from automatically merging user-provided
+environment variables into the buildpack process environment during
+<code>bin/detect</code> and <code>bin/build</code>. User-provided environment variables remain
+available at <code>$CNB_PLATFORM_DIR/env/</code> regardless of this setting.</p>
 </li>
 <li>
 <p><strong><code>homepage</code></strong> <em>(string, optional)</em><br>

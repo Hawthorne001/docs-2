@@ -53,8 +53,8 @@
   
   <link rel="stylesheet" href="https://buildpacks.io/scss/site.css" integrity="" media="screen">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+  <script src="/pagefind/pagefind-ui.js"></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJLSR4FQXL"></script>
   <link rel="stylesheet"
@@ -70,31 +70,6 @@
         color: #888888;
     }
   </style>
-
-  <script>
-    $(function () {
-      $('h1[id], h2[id], h3[id], h4[id], h5[id]').not(':has(a)').each(function () {
-        this.innerHTML =
-          `<a href="#${this.id}" class="h-anchor">
-            ${this.innerHTML} <i class="fas fa-link icon" aria-label="Anchor"></i>
-          </a>`;
-      });
-
-      if ($('input#search').length > 0) {
-        docsearch({
-          apiKey: '5c00a51f166dab99e1cc6e0a9976e9f9',
-          indexName: 'buildpacks',
-          inputSelector: 'input#search',
-          debug: false
-        });
-      }
-    });
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-CJLSR4FQXL');
-  </script>
 
   <title>Use project.toml · Cloud Native Buildpacks</title>
 </head>
@@ -170,9 +145,16 @@
     <div class='row'>
       <div class='col-md-3 docs-sidebar'>
         <nav class='sidebar'>
-  <form class="pt-1 pb-3 pl-2 pr-3 border-bottom">
-    <input id="search" class="form-control" type="search" placeholder="Search..." aria-label="Search">
-  </form>
+  <div id="search"></div>
+  <script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      bundlePath: "/pagefind/"
+    });
+  });
+  </script>
   <ul>
     <li data-nav-id="/docs/" class="dd-item depth-0">
       <a href="/docs/">Getting Started</a>
@@ -942,16 +924,16 @@ file at the root of the application. For more on <code>gitignore</code> matching
 </span></span></code></pre></div><p>To use a <code>project.toml</code> file, simply:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># build the app</span>
 </span></span><span class="line"><span class="cl">pack build sample-app <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --builder cnbs/sample-builder:noble <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --path  samples/apps/bash-script/
+</span></span></span><span class="line"><span class="cl">    --builder cnbs/sample-builder:noble <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --path  samples/apps/bash-script/
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># run the app</span>
 </span></span><span class="line"><span class="cl">docker run sample-app
 </span></span></code></pre></div><p>If the descriptor is named <code>project.toml</code>, it will be read by <code>pack</code> automatically. Otherwise, you can run:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pack build sample-app <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --builder cnbs/sample-builder:noble <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --path  samples/apps/bash-script/ <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --descriptor  samples/apps/bash-script/&lt;project-descriptor-file.toml&gt;
+</span></span></span><span class="line"><span class="cl">    --builder cnbs/sample-builder:noble <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --path  samples/apps/bash-script/ <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --descriptor  samples/apps/bash-script/&lt;project-descriptor-file.toml&gt;
 </span></span></code></pre></div><p>to specify an alternatively named <code>project descriptor</code>.</p>
 <h3 id="specify-buildpacks-and-envs">Specify Buildpacks and Envs</h3>
 <p>As with other methods of <a href="/docs/for-app-developers/how-to/build-inputs/specify-buildpacks">specifying buildpacks</a>, the only ones used are those that are specifically
@@ -986,9 +968,9 @@ to use different buildpacks in the above case, we could also call <code>pack bui
 </span></span></code></pre></div><p>Paste the above <code>toml</code> as <code>new-project.toml</code> in the <code>samples/apps/bash-script/</code> directory, and simply:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># build the app</span>
 </span></span><span class="line"><span class="cl">pack build sample-app <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --builder cnbs/sample-builder:noble <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --path  samples/apps/bash-script/ <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --descriptor samples/apps/bash-script/new-project.toml
+</span></span></span><span class="line"><span class="cl">    --builder cnbs/sample-builder:noble <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --path  samples/apps/bash-script/ <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --descriptor samples/apps/bash-script/new-project.toml
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># run the app</span>
 </span></span><span class="line"><span class="cl">docker run sample-app
@@ -998,7 +980,7 @@ to use different buildpacks in the above case, we could also call <code>pack bui
 </span></span><span class="line"><span class="cl"><span class="nx">builder</span> <span class="p">=</span> <span class="s2">&#34;cnbs/sample-builder:noble&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># then the pack command does not require builder to be set</span>
 </span></span><span class="line"><span class="cl">pack build sample-app <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --path  samples/apps/bash-script/
+</span></span></span><span class="line"><span class="cl">    --path  samples/apps/bash-script/
 </span></span></code></pre></div><h3 id="further-reading">Further Reading</h3>
 <p>For more about project descriptors, look at the <a href="/docs/reference/project-descriptor/">schema</a>, as well as the <a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">specification</a>.</p>
 

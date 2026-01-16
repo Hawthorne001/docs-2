@@ -55,8 +55,8 @@
   
   <link rel="stylesheet" href="https://buildpacks.io/scss/site.css" integrity="" media="screen">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+  <script src="/pagefind/pagefind-ui.js"></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJLSR4FQXL"></script>
   <link rel="stylesheet"
@@ -72,31 +72,6 @@
         color: #888888;
     }
   </style>
-
-  <script>
-    $(function () {
-      $('h1[id], h2[id], h3[id], h4[id], h5[id]').not(':has(a)').each(function () {
-        this.innerHTML =
-          `<a href="#${this.id}" class="h-anchor">
-            ${this.innerHTML} <i class="fas fa-link icon" aria-label="Anchor"></i>
-          </a>`;
-      });
-
-      if ($('input#search').length > 0) {
-        docsearch({
-          apiKey: '5c00a51f166dab99e1cc6e0a9976e9f9',
-          indexName: 'buildpacks',
-          inputSelector: 'input#search',
-          debug: false
-        });
-      }
-    });
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-CJLSR4FQXL');
-  </script>
 
   <title>Pack · Cloud Native Buildpacks</title>
 </head>
@@ -172,9 +147,16 @@
     <div class='row'>
       <div class='col-md-3 docs-sidebar'>
         <nav class='sidebar'>
-  <form class="pt-1 pb-3 pl-2 pr-3 border-bottom">
-    <input id="search" class="form-control" type="search" placeholder="Search..." aria-label="Search">
-  </form>
+  <div id="search"></div>
+  <script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      bundlePath: "/pagefind/"
+    });
+  });
+  </script>
   <ul>
     <li data-nav-id="/docs/" class="dd-item depth-0">
       <a href="/docs/">Getting Started</a>
@@ -927,7 +909,7 @@
 <hr>
 <h2 id="pack-cli"><code>pack</code> CLI</h2>
 <h3 id="install">Install</h3>
-<p>You can install the most recent version of the <code>pack</code> CLI (version <strong>0.38.2</strong>) on the following operating systems:</p>
+<p>You can install the most recent version of the <code>pack</code> CLI (version <strong>0.39.1</strong>) on the following operating systems:</p>
 
 
 
@@ -1011,7 +993,7 @@
 </li>
 <li>Use a version tag to pin a specific release:
 <ul>
-<li><code>buildpacksio/pack:0.38.2</code></li>
+<li><code>buildpacksio/pack:0.39.1</code></li>
 <li><a href="https://hub.docker.com/r/buildpacksio/pack/tags">other versions</a></li>
 </ul>
 </li>
@@ -1020,9 +1002,9 @@
 <p>In some container environments you may be required to mount your local Docker daemon&rsquo;s socket.</p>
 <p>For example, using the Docker CLI:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="nv">$PWD</span>:/workspace -w /workspace <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  buildpacksio/pack build &lt;my-image&gt; --builder &lt;builder-image&gt;
+</span></span></span><span class="line"><span class="cl">  -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -v <span class="nv">$PWD</span>:/workspace -w /workspace <span class="se">\
+</span></span></span><span class="line"><span class="cl">  buildpacksio/pack build &lt;my-image&gt; --builder &lt;builder-image&gt;
 </span></span></code></pre></div>
               </div>
             
@@ -1058,7 +1040,7 @@
               
               <div class="tab-pane px-3 fade " id="linux-script-install">
                 <p>The following command will download the latest version of <code>pack</code> from <a href="https://github.com/buildpacks/pack/releases">GitHub</a> and install it in <code>/usr/local/bin/</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.38.2/pack-v0.38.2-linux.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.39.1/pack-v0.39.1-linux.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
 </span></span></code></pre></div>
               </div>
             
@@ -1123,7 +1105,7 @@
 </li>
 <li>Use a version tag to pin a specific release:
 <ul>
-<li><code>buildpacksio/pack:0.38.2</code></li>
+<li><code>buildpacksio/pack:0.39.1</code></li>
 <li><a href="https://hub.docker.com/r/buildpacksio/pack/tags">other versions</a></li>
 </ul>
 </li>
@@ -1132,9 +1114,9 @@
 <p>In some container environments you may be required to mount your local Docker daemon&rsquo;s socket.</p>
 <p>For example, using the Docker CLI:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="nv">$PWD</span>:/workspace -w /workspace <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  buildpacksio/pack build &lt;my-image&gt; --builder &lt;builder-image&gt;
+</span></span></span><span class="line"><span class="cl">  -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -v <span class="nv">$PWD</span>:/workspace -w /workspace <span class="se">\
+</span></span></span><span class="line"><span class="cl">  buildpacksio/pack build &lt;my-image&gt; --builder &lt;builder-image&gt;
 </span></span></code></pre></div>
               </div>
             
@@ -1161,9 +1143,9 @@
               <div class="tab-pane px-3 fade " id="macos-script-install">
                 <p>The following command will download the latest version of <code>pack</code> from <a href="https://github.com/buildpacks/pack/releases">GitHub</a> and install it in <code>/usr/local/bin/</code>.</p>
 <p>Intel:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.38.2/pack-v0.38.2-macos.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.39.1/pack-v0.39.1-macos.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
 </span></span></code></pre></div><p>Apple Silicon:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.38.2/pack-v0.38.2-macos-arm64.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>curl -sSL <span class="s2">&#34;https://github.com/buildpacks/pack/releases/download/v0.39.1/pack-v0.39.1-macos-arm64.tgz&#34;</span> <span class="p">|</span> sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack<span class="o">)</span>
 </span></span></code></pre></div>
               </div>
             
@@ -1215,7 +1197,7 @@
               
               <div class="tab-pane px-3 fade active in show" id="windows-chocolatey">
                 <p>To install <code>pack</code> on Windows, we recommend using <a href="https://chocolatey.org/">Chocolatey</a>:</p>
-<pre tabindex="0"><code>choco install pack --version=0.38.2
+<pre tabindex="0"><code>choco install pack --version=0.39.1
 </code></pre>
               </div>
             
@@ -1232,7 +1214,7 @@
 </li>
 <li>Use a version tag to pin a specific release:
 <ul>
-<li><code>buildpacksio/pack:0.38.2</code></li>
+<li><code>buildpacksio/pack:0.39.1</code></li>
 <li><a href="https://hub.docker.com/r/buildpacksio/pack/tags">other versions</a></li>
 </ul>
 </li>
@@ -1241,9 +1223,9 @@
 <p>In some container environments you may be required to mount your local Docker daemon&rsquo;s socket.</p>
 <p>For example, using the Docker CLI:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v <span class="nv">$PWD</span>:/workspace -w /workspace <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  buildpacksio/pack build &lt;my-image&gt; --builder &lt;builder-image&gt;
+</span></span></span><span class="line"><span class="cl">  -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\
+</span></span></span><span class="line"><span class="cl">  -v <span class="nv">$PWD</span>:/workspace -w /workspace <span class="se">\
+</span></span></span><span class="line"><span class="cl">  buildpacksio/pack build &lt;my-image&gt; --builder &lt;builder-image&gt;
 </span></span></code></pre></div>
               </div>
             

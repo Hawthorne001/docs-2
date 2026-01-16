@@ -53,8 +53,8 @@
   
   <link rel="stylesheet" href="https://buildpacks.io/scss/site.css" integrity="" media="screen">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+  <script src="/pagefind/pagefind-ui.js"></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJLSR4FQXL"></script>
   <link rel="stylesheet"
@@ -70,31 +70,6 @@
         color: #888888;
     }
   </style>
-
-  <script>
-    $(function () {
-      $('h1[id], h2[id], h3[id], h4[id], h5[id]').not(':has(a)').each(function () {
-        this.innerHTML =
-          `<a href="#${this.id}" class="h-anchor">
-            ${this.innerHTML} <i class="fas fa-link icon" aria-label="Anchor"></i>
-          </a>`;
-      });
-
-      if ($('input#search').length > 0) {
-        docsearch({
-          apiKey: '5c00a51f166dab99e1cc6e0a9976e9f9',
-          indexName: 'buildpacks',
-          inputSelector: 'input#search',
-          debug: false
-        });
-      }
-    });
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-CJLSR4FQXL');
-  </script>
 
   <title>Community · Cloud Native Buildpacks</title>
 </head>
@@ -346,7 +321,7 @@
 <p>Attend working group meetings to hear the latest development updates, provide feedback, ask questions, meet the maintainers, and get to know other members of the community.</p>
 <p>Join our <a href="https://lists.cncf.io/g/cncf-buildpacks">Mailing List</a> to get updates on the project and invitations to working group meetings.</p>
 <ul>
-<li><a href="https://zoom.us/j/91289548697?pwd=SzNzaHdmVUVBZGhJM20weThIdGdkUT09">Meeting Zoom Link</a></li>
+<li><a href="https://zoom-lfx.platform.linuxfoundation.org/meeting/93619711301?password=8245be83-8e37-4d5b-b46e-327859e32faf">Meeting Zoom Link</a></li>
 <li>See previous community meetings on our <a href="https://www.youtube.com/playlist?list=PL1p8pquzNvRpDbbgZ0db0MRA-W5_w0G1U">YouTube Playlist</a></li>
 <li><a href="https://docs.google.com/document/d/18gkdfJsy8AQWsOgzPbLRnxN4a-WtUoaCM2Lh7-08rdo/edit#heading=h.3kg2wwvbnkb3">Meeting agenda</a></li>
 </ul>

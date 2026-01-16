@@ -55,8 +55,8 @@
   
   <link rel="stylesheet" href="https://buildpacks.io/scss/site.css" integrity="" media="screen">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+  <script src="/pagefind/pagefind-ui.js"></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJLSR4FQXL"></script>
   <link rel="stylesheet"
@@ -72,31 +72,6 @@
         color: #888888;
     }
   </style>
-
-  <script>
-    $(function () {
-      $('h1[id], h2[id], h3[id], h4[id], h5[id]').not(':has(a)').each(function () {
-        this.innerHTML =
-          `<a href="#${this.id}" class="h-anchor">
-            ${this.innerHTML} <i class="fas fa-link icon" aria-label="Anchor"></i>
-          </a>`;
-      });
-
-      if ($('input#search').length > 0) {
-        docsearch({
-          apiKey: '5c00a51f166dab99e1cc6e0a9976e9f9',
-          indexName: 'buildpacks',
-          inputSelector: 'input#search',
-          debug: false
-        });
-      }
-    });
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-CJLSR4FQXL');
-  </script>
 
   <title>Create dependency layers · Cloud Native Buildpacks</title>
 </head>
@@ -172,9 +147,16 @@
     <div class='row'>
       <div class='col-md-3 docs-sidebar'>
         <nav class='sidebar'>
-  <form class="pt-1 pb-3 pl-2 pr-3 border-bottom">
-    <input id="search" class="form-control" type="search" placeholder="Search..." aria-label="Search">
-  </form>
+  <div id="search"></div>
+  <script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      bundlePath: "/pagefind/"
+    });
+  });
+  </script>
   <ul>
     <li data-nav-id="/docs/" class="dd-item depth-0">
       <a href="/docs/">Getting Started</a>
@@ -955,13 +937,13 @@
 <h3 id="example-1">Example</h3>
 <p>This is a simple <code>./bin/build</code> script for a buildpack that runs Python&rsquo;s <code>pip</code> package manager to resolve dependencies:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/sh
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nv">PIP_LAYER</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$CNB_LAYERS_DIR</span><span class="s2">/pip&#34;</span>
 </span></span><span class="line"><span class="cl">mkdir -p <span class="s2">&#34;</span><span class="nv">$PIP_LAYER</span><span class="s2">/modules&#34;</span> <span class="s2">&#34;</span><span class="nv">$PIP_LAYER</span><span class="s2">/env&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">pip install -r requirements.txt -t <span class="s2">&#34;</span><span class="nv">$PIP_LAYER</span><span class="s2">/modules&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --install-option<span class="o">=</span><span class="s2">&#34;--install-scripts=</span><span class="nv">$PIP_LAYER</span><span class="s2">/bin&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --exists-action<span class="o">=</span>w --disable-pip-version-check --no-cache-dir
+</span></span></span><span class="line"><span class="cl">  --install-option<span class="o">=</span><span class="s2">&#34;--install-scripts=</span><span class="nv">$PIP_LAYER</span><span class="s2">/bin&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --exists-action<span class="o">=</span>w --disable-pip-version-check --no-cache-dir
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;launch = true&#34;</span> &gt; <span class="s2">&#34;</span><span class="nv">$PIP_LAYER</span><span class="s2">.toml&#34;</span>
 </span></span></code></pre></div>
